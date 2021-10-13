@@ -25,11 +25,13 @@ A subset of the TNT resources are provided with this SDK:
  * `CorePro::Program`
  * `CorePro::Customer`
  * `CorePro::Account`
+ * `CorePro::ExternalAccount`
 
 These resources have implemented the following methods to allow API operations:
- * `all`
- * `find`
- * `create`
+ * `#all`
+ * `#find`
+ * `#create`
+ * `#onboard(kyc_vendor)` (only for `CorePro::Customer`)
 
 Here's an example on how to create a transaction, capture it, and refund it:
 ```ruby
