@@ -20,12 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-A subset of the TNT resources are provided with this SDK:
+A subset of the CorePro resources are provided with this SDK:
 
  * `CorePro::Program`
  * `CorePro::Customer`
  * `CorePro::Account`
  * `CorePro::ExternalAccount`
+ * `CorePro::Transfer`
 
 These resources have implemented the following methods to allow API operations:
  * `#all`
@@ -33,7 +34,8 @@ These resources have implemented the following methods to allow API operations:
  * `#create`
  * `#onboard(kyc_vendor)` (only for `CorePro::Customer`)
 
-Here's an example on how to create a transaction, capture it, and refund it:
+Here's an example on how to create a customer, an account,
+and initiate a transfer:
 ```ruby
 require 'core_pro'
 
@@ -47,10 +49,26 @@ customer = CorePro::Customer.create(
 
 customer.onboard(:socure)
 
+old_account = CorePro::Account.find(customer.customerId, <OLD_ACCOUNT_ID>)
+
 account = CorePro::Account.create(
   customerId: customer.customerId,
   name: 'Test',
-  productId: 50608512
+  productId: <PRODUCT_ID>
+)
+
+transfer = CorePro::Transfer.create(
+  amount: 1.0,
+  customerId: customer.customerId,
+  fromId: old_account.accountId,
+  toId: account.accountId
+)
+
+transactions = CorePro::Transaction.all(
+  customerId,
+  accountId,
+  '2021-12-21',
+  '2021-12-22'
 )
 ```
 

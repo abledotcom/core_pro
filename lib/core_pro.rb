@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'base64'
 require 'http/rest_client'
 
 # CorePro HTTP API Client
@@ -15,10 +14,11 @@ module CorePro
 
     # Resource collection finder, uses the default limit
     #
+    # @param filters [Array] URI filters to pass to the endpoint.
     # @param params [Hash] URI parameters to pass to the endpoint.
     # @return [Array] of [Object] instances
-    def self.all(filers = [], params = {})
-      objectify(request(:get, uri(:list, *filers), params: params))
+    def self.all(filters = [], params = {})
+      objectify(request(:get, uri(:list, *filters), params: params))
     end
 
     # Resource finder
@@ -26,8 +26,8 @@ module CorePro
     # @param id [String] resource indentifier
     # @param params [Hash] URI parameters to pass to the endpoint.
     # @return [Object] instance
-    def self.find(id, params = {})
-      objectify(request(:get, uri(:get, id), params: params))
+    def self.find(*id_or_ids)
+      objectify(request(:get, uri(:get, *id_or_ids)))
     end
 
     # Resource creation helper
@@ -135,5 +135,15 @@ module CorePro
   # External account endpoint resource
   class ExternalAccount < Resource
     path '/externalAccount'
+  end
+
+  # Transfer endpoint resource
+  class Transfer < Resource
+    path '/transfer'
+  end
+
+  # Transaction endpoint resource
+  class Transaction < Resource
+    path '/transaction'
   end
 end
