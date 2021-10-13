@@ -27,6 +27,7 @@ A subset of the CorePro resources are provided with this SDK:
  * `CorePro::Account`
  * `CorePro::ExternalAccount`
  * `CorePro::Transfer`
+ * `CorePro::Transaction`
 
 These resources have implemented the following methods to allow API operations:
  * `#all`
