@@ -155,4 +155,355 @@ http_interactions:
           "status": 200
         }
   recorded_at: Mon, 04 Oct 2021 14:44:04 GMT
+- request:
+    method: get
+    uri: "<COREPRO_ENDPOINT>/customer/get/12345"
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <AUTH_TOKEN>
+      Connection:
+      - close
+      Host:
+      - sandbox-api.corepro.io
+      User-Agent:
+      - http.rb/5.0.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 13 Oct 2021 11:31:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1447'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
+      Access-Control-Expose-Headers:
+      - Request-Context
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "data": {
+            "accessTypeCode": "FULL",
+            "accounts": [
+
+            ],
+            "addresses": [
+
+            ],
+            "cards": [
+
+            ],
+            "createdDate": "2020-02-03T22:00:08.750-05:00",
+            "culture": "en-US/es-US",
+            "customerCount": 0,
+            "customerId": 12345,
+            "customField1": "",
+            "customField2": "",
+            "customField3": "",
+            "customField4": "",
+            "customField5": "",
+            "documentsAcceptedDate": "2020-02-03T22:00:08.750-05:00",
+            "driversLicenseNumberMasked": "**********",
+            "driversLicenseState": "",
+            "emailAddress": "",
+            "externalAccounts": [
+
+            ],
+            "firstName": "Stas",
+            "gender": "M",
+            "isActive": true,
+            "isActiveOrVerified": true,
+            "isDocumentsAccepted": true,
+            "isLocked": false,
+            "isOptedInToBankCommunication": true,
+            "isSubjectToBackupWithholding": true,
+            "lastActivityDate": "2020-02-03T22:00:08.750-05:00",
+            "lastModifiedDate": "2020-02-03T22:00:08.750-05:00",
+            "lastName": "",
+            "lockedReason": "",
+            "middleName": "",
+            "passportCountry": "",
+            "passportNumberMasked": "**********",
+            "phones": [
+
+            ],
+            "status": "Active",
+            "suffix": "Jr/Dr/Prof,...",
+            "tag": "",
+            "taxIdMasked": "**********"
+          }
+        }
+  recorded_at: Wed, 13 Oct 2021 11:31:23 GMT
+- request:
+    method: get
+    uri: "<COREPRO_ENDPOINT>/account/list/12345"
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <AUTH_TOKEN>
+      Connection:
+      - close
+      Host:
+      - sandbox-api.corepro.io
+      User-Agent:
+      - http.rb/5.0.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 13 Oct 2021 11:31:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '109'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
+      Access-Control-Expose-Headers:
+      - Request-Context
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "data": [
+            {
+              "accountNumber": "string",
+              "accountNumberMasked": "string",
+              "customField1": null,
+              "customField2": null,
+              "customField3": null,
+              "customField4": null,
+              "customField5": null,
+              "customerId": 12345,
+              "externalAccountId": 9876,
+              "firstName": "Stas",
+              "isActive": true,
+              "isLocked": false,
+              "lastModifiedDate": "2021-10-13T17:42:40.977Z",
+              "lastName": "",
+              "lockedDate": null,
+              "lockedReason": null,
+              "name": "Test",
+              "nickName": null,
+              "nocCode": null,
+              "routingNumber": "999999999",
+              "routingNumberMasked": "******999",
+              "status": "Unverified",
+              "statusDate": "2021-10-13T17:42:40.977Z",
+              "tag": null,
+              "type": "Checking"
+            }
+          ],
+          "errors": [],
+          "requestId": "9dea82a2-f811-4fdd-91fb-2fe9638f6aac",
+          "status": 200
+        }
+  recorded_at: Wed, 13 Oct 2021 11:31:23 GMT
+- request:
+    method: post
+    uri: "<COREPRO_ENDPOINT>/customer/onboard/socure/all"
+    body:
+      encoding: UTF-8
+      string: '{"customerId":12345}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <AUTH_TOKEN>
+      Connection:
+      - close
+      Host:
+      - sandbox-api.corepro.io
+      User-Agent:
+      - http.rb/5.0.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 13 Oct 2021 11:32:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '228'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
+      Access-Control-Expose-Headers:
+      - Request-Context
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "data": {
+            "accessTypeCode": "FULL",
+            "accounts": [
+
+            ],
+            "addresses": [
+
+            ],
+            "cards": [
+
+            ],
+            "createdDate": "2020-02-03T22:00:08.750-05:00",
+            "culture": "en-US/es-US",
+            "customerCount": 0,
+            "customerId": 12345,
+            "customField1": "",
+            "customField2": "",
+            "customField3": "",
+            "customField4": "",
+            "customField5": "",
+            "documentsAcceptedDate": "2020-02-03T22:00:08.750-05:00",
+            "driversLicenseNumberMasked": "**********",
+            "driversLicenseState": "",
+            "emailAddress": "",
+            "externalAccounts": [
+
+            ],
+            "firstName": "Stas",
+            "gender": "M",
+            "isActive": true,
+            "isActiveOrVerified": true,
+            "isDocumentsAccepted": true,
+            "isLocked": false,
+            "isOptedInToBankCommunication": true,
+            "isSubjectToBackupWithholding": true,
+            "lastActivityDate": "2020-02-03T22:00:08.750-05:00",
+            "lastModifiedDate": "2020-02-03T22:00:08.750-05:00",
+            "lastName": "",
+            "lockedReason": "",
+            "middleName": "",
+            "passportCountry": "",
+            "passportNumberMasked": "**********",
+            "phones": [
+
+            ],
+            "status": "Verified",
+            "suffix": "Jr/Dr/Prof,...",
+            "tag": "",
+            "taxIdMasked": "**********"
+          }
+        }
+  recorded_at: Wed, 13 Oct 2021 11:32:03 GMT
+- request:
+    method: post
+    uri: "<COREPRO_ENDPOINT>/account/create"
+    body:
+      encoding: UTF-8
+      string: '{"name":"Test","customerId":12345,"productId":98765}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <AUTH_TOKEN>
+      Connection:
+      - close
+      Host:
+      - sandbox-api.corepro.io
+      User-Agent:
+      - http.rb/5.0.2
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Wed, 13 Oct 2021 11:39:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '184'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
+      Access-Control-Expose-Headers:
+      - Request-Context
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "data": {
+            "accountNumber": "string",
+            "accountNumberMasked": "string",
+            "customField1": null,
+            "customField2": null,
+            "customField3": null,
+            "customField4": null,
+            "customField5": null,
+            "customerId": 12345,
+            "externalAccountId": 9876,
+            "firstName": "Stas",
+            "isActive": true,
+            "isLocked": false,
+            "lastModifiedDate": "2021-10-13T17:42:40.977Z",
+            "lastName": "",
+            "lockedDate": null,
+            "lockedReason": null,
+            "name": "Test",
+            "nickName": null,
+            "nocCode": null,
+            "routingNumber": "999999999",
+            "routingNumberMasked": "******999",
+            "status": "Unverified",
+            "statusDate": "2021-10-13T17:42:40.977Z",
+            "tag": null,
+            "type": "Checking"
+          }
+        }
+  recorded_at: Wed, 13 Oct 2021 11:39:05 GMT
 recorded_with: VCR 6.0.0

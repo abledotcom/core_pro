@@ -92,10 +92,32 @@ module CorePro
   # Customer endpoint resource
   class Customer < Resource
     path '/customer'
+
+    # Performs a customer KYC/onboarding
+    #
+    # See: https://docs.corepro.io/reference#4-run-kyc-on-the-customer
+    #
+    # @return [Customer] instance
+    def onboard(kyc_vendor)
+      onboard_uri = self.class.uri(:onboard, kyc_vendor, :all)
+
+      self.class.objectify(
+        self.class.request(
+          :post,
+          onboard_uri,
+          json: { customerId: customerId }
+        )
+      )
+    end
   end
 
   # Accounts endpoint resource
   class Account < Resource
     path '/account'
+  end
+
+  # External account endpoint resource
+  class ExternalAccount < Resource
+    path '/externalAccount'
   end
 end

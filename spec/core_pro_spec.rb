@@ -21,19 +21,35 @@ RSpec.describe CorePro::Resource do
     end
   end
 
+  describe '#onboard', vcr: VCR_OPTS do
+    let(:customer) do
+      CorePro::Customer.find(12_345)
+    end
+
+    it do
+      expect(customer).not_to be_nil
+
+      updated_customer = customer.onboard(:socure)
+
+      expect(updated_customer.customerId).to eq(12_345)
+      expect(updated_customer.status).to eq('Verified')
+    end
+  end
+
   describe '#all for accounts', vcr: VCR_OPTS do
     let(:accounts) do
-      CorePro::Account.all([6_795_910], {})
+      CorePro::Account.all([12_345], {})
     end
 
     it do
       expect(accounts).not_to be_empty
-      expect(accounts.size).to eq(2)
+      expect(accounts.size).to eq(1)
 
       account = accounts.first
 
-      expect(account.name).to eq('Stas')
+      expect(account.name).to eq('Test')
       expect(account.customerId).to eq(12_345)
+      expect(account.externalAccountId).to eq(9_876)
 
       expect(account).to be_a(CorePro::Account)
     end
@@ -49,10 +65,11 @@ RSpec.describe CorePro::Resource do
     end
 
     it do
-      expect(new_account).not_to be_empty
+      expect(new_account).not_to be_nil
 
       expect(new_account.name).to eq('Test')
       expect(new_account.customerId).to eq(12_345)
+      expect(new_account.externalAccountId).not_to be_nil
 
       expect(new_account).to be_a(CorePro::Account)
     end
