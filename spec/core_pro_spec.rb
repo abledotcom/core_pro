@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe CorePro::Resource do
-  describe '#all', vcr: VCR_OPTS do
+  describe '#all', vcr: 'core_pro' do
     let(:customers) do
       CorePro::Customer.all({})
     end
@@ -21,7 +21,7 @@ RSpec.describe CorePro::Resource do
     end
   end
 
-  describe '#onboard', vcr: VCR_OPTS do
+  describe '#onboard', vcr: 'core_pro' do
     let(:customer) do
       CorePro::Customer.find(12_345)
     end
@@ -36,7 +36,7 @@ RSpec.describe CorePro::Resource do
     end
   end
 
-  describe '#create for a new customer', vcr: VCR_OPTS do
+  describe '#create for a new customer', vcr: 'core_pro' do
     let(:new_customer) do
       CorePro::Customer.create(
         firstName: 'James',
@@ -57,7 +57,25 @@ RSpec.describe CorePro::Resource do
     end
   end
 
-  describe '#all for accounts', vcr: VCR_OPTS do
+  describe '#create with errors', vcr: 'core_pro_errors' do
+    let(:new_customer) do
+      CorePro::Customer.create(
+        lastName: 'Bond',
+        isSubjectToBackupWithholding: false,
+        isOptedInToBankCommunication: false,
+        isDocumentsAccepted: true
+      ).reload
+    end
+
+    it do
+      expect { new_customer }.to raise_error(
+        HTTP::RestClient::ResponseError,
+        /First Name is a required field/
+      )
+    end
+  end
+
+  describe '#all for accounts', vcr: 'core_pro' do
     let(:accounts) do
       CorePro::Account.all([12_345], {})
     end
@@ -76,7 +94,7 @@ RSpec.describe CorePro::Resource do
     end
   end
 
-  describe '#create for a new account', vcr: VCR_OPTS do
+  describe '#create for a new account', vcr: 'core_pro' do
     let(:new_account) do
       CorePro::Account.create(
         name: 'Test',

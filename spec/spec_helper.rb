@@ -10,12 +10,13 @@ SimpleCov.start do
 end
 SimpleCov.minimum_coverage 90
 
-VCR_OPTS = { cassette_name: 'core_pro', record: :new_episodes }.freeze
-
 VCR.configure do |config|
   config.configure_rspec_metadata!
   config.cassette_library_dir = 'vcr_cassettes'
   config.hook_into :webmock
+  config.default_cassette_options = {
+    record: :new_episodes
+  }
 
   %w[COREPRO_ENDPOINT COREPRO_KEY COREPRO_SECRET].each do |pkey|
     ENV[pkey] ||= 'secret'
@@ -33,6 +34,7 @@ require 'core_pro'
 RSpec.configure do |config|
   # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
+  config.filter_run_when_matching :focus
 
   config.expect_with :rspec do |c|
     c.syntax = :expect

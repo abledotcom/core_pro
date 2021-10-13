@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: "<COREPRO_ENDPOINT>/customer/create"
+    body:
+      encoding: UTF-8
+      string: '{"lastName":"Bond","isSubjectToBackupWithholding":false,"isOptedInToBankCommunication":false,"isDocumentsAccepted":true}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <AUTH_TOKEN>
+      Connection:
+      - close
+      Host:
+      - sandbox-api.corepro.io
+      User-Agent:
+      - http.rb/5.0.2
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 13 Oct 2021 18:24:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '186'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
+      Access-Control-Expose-Headers:
+      - Request-Context
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "errors": [
+            {
+              "code": 60201,
+              "message": "First Name is a required field."
+            }
+          ],
+          "requestId": "2b64955d-cd24-4944-9f83-fb2bfbc934b3",
+          "status": 400
+        }
+  recorded_at: Wed, 13 Oct 2021 18:24:16 GMT
+recorded_with: VCR 6.0.0

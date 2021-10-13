@@ -83,7 +83,7 @@ module CorePro
     # @param parsed_response [Object] the parsed server response
     #
     # @return [String]
-    def extract_error(response, parsed_response)
+    def self.extract_error(response, parsed_response)
       parsed_response['errors'] || super(response, parsed_response)
     end
 
@@ -95,8 +95,8 @@ module CorePro
     # @param parsed_response [Object] the parsed server response
     #
     # @return [TrueClass] if status code is not a successful standard value
-    def error_response?(response, parsed_response)
-      !(200..299).cover?(response.code) && parsed_response['errors'].empty?
+    def self.error_response?(response, parsed_response)
+      !(200..299).cover?(response.code) && parsed_response['errors'].any?
     end
   end
 
