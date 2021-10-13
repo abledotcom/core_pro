@@ -67,14 +67,14 @@ module CorePro
     def resource_id
       resource_name = self.class.name.to_s.split('::').last
       resource_name[0] = resource_name[0].downcase
-      resource_name + 'Id'
+      "#{resource_name}Id"
     end
 
     # Helper to reload a resource
     #
     # @return [CorePro::Resource]
     def reload
-      self.class.find(self.send(resource_id))
+      self.class.find(send(resource_id))
     end
 
     # Extracts the error message from the response
