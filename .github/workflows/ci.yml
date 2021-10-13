@@ -1,0 +1,26 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  ruby_test_matrix:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby: ['3.0']
+
+    steps:
+    - uses: actions/checkout@master
+
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+
+    - name: Runs code QA and tests
+      env:
+        COREPRO_ENDPOINT: https://sandbox-api.corepro.io
+        COREPRO_KEY: Test_KEY
+        COREPRO_SECRET: Test_SECRET
+      run: bundle install && bundle exec rake
