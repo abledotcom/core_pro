@@ -37,12 +37,20 @@ Here's an example on how to create a transaction, capture it, and refund it:
 ```ruby
 require 'core_pro'
 
+customer = CorePro::Customer.create(
+  firstName: 'James',
+  lastName: 'Bond',
+  isSubjectToBackupWithholding: false,
+  isOptedInToBankCommunication: false,
+  isDocumentsAccepted: true
+).reload
+
+customer.onboard(:socure)
+
 account = CorePro::Account.create(
-{
-  customerId: 6795910,
+  customerId: customer.customerId,
   name: 'Test',
   productId: 50608512
-  }
 )
 ```
 
