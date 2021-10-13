@@ -14,7 +14,7 @@ RSpec.describe CorePro::Resource do
 
       customer = customers.first
 
-      expect(customer.firstName).to eq('Stas')
+      expect(customer.firstName).to eq('James')
       expect(customer.customerId).to eq(12_345)
 
       expect(customer).to be_a(CorePro::Customer)
@@ -33,6 +33,27 @@ RSpec.describe CorePro::Resource do
 
       expect(updated_customer.customerId).to eq(12_345)
       expect(updated_customer.status).to eq('Verified')
+    end
+  end
+
+  describe '#create for a new customer', vcr: VCR_OPTS do
+    let(:new_customer) do
+      CorePro::Customer.create(
+        firstName: 'James',
+        lastName: 'Bond',
+        isSubjectToBackupWithholding: false,
+        isOptedInToBankCommunication: false,
+        isDocumentsAccepted: true
+      ).reload
+    end
+
+    it do
+      expect(new_customer).not_to be_nil
+      expect(new_customer.firstName).to eq('James')
+      expect(new_customer.lastName).to eq('Bond')
+      expect(new_customer.customerId).not_to be_nil
+
+      expect(new_customer).to be_a(CorePro::Customer)
     end
   end
 
@@ -55,7 +76,7 @@ RSpec.describe CorePro::Resource do
     end
   end
 
-  describe '#create', vcr: VCR_OPTS do
+  describe '#create for a new account', vcr: VCR_OPTS do
     let(:new_account) do
       CorePro::Account.create(
         name: 'Test',

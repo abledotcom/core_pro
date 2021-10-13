@@ -74,17 +74,17 @@ http_interactions:
               "externalAccounts": [
 
               ],
-              "firstName": "Stas",
+              "firstName": "James",
               "gender": "M",
               "isActive": true,
               "isActiveOrVerified": true,
               "isDocumentsAccepted": true,
               "isLocked": false,
-              "isOptedInToBankCommunication": true,
+              "isOptedInToBankCommunication": false,
               "isSubjectToBackupWithholding": true,
               "lastActivityDate": "2020-02-03T22:00:08.750-05:00",
               "lastModifiedDate": "2020-02-03T22:00:08.750-05:00",
-              "lastName": "",
+              "lastName": "Bond",
               "lockedReason": "",
               "middleName": "",
               "passportCountry": "",
@@ -228,17 +228,17 @@ http_interactions:
             "externalAccounts": [
 
             ],
-            "firstName": "Stas",
+            "firstName": "James",
             "gender": "M",
             "isActive": true,
             "isActiveOrVerified": true,
             "isDocumentsAccepted": true,
             "isLocked": false,
-            "isOptedInToBankCommunication": true,
+            "isOptedInToBankCommunication": false,
             "isSubjectToBackupWithholding": true,
             "lastActivityDate": "2020-02-03T22:00:08.750-05:00",
             "lastModifiedDate": "2020-02-03T22:00:08.750-05:00",
-            "lastName": "",
+            "lastName": "Bond",
             "lockedReason": "",
             "middleName": "",
             "passportCountry": "",
@@ -406,17 +406,17 @@ http_interactions:
             "externalAccounts": [
 
             ],
-            "firstName": "Stas",
+            "firstName": "James",
             "gender": "M",
             "isActive": true,
             "isActiveOrVerified": true,
             "isDocumentsAccepted": true,
             "isLocked": false,
-            "isOptedInToBankCommunication": true,
+            "isOptedInToBankCommunication": false,
             "isSubjectToBackupWithholding": true,
             "lastActivityDate": "2020-02-03T22:00:08.750-05:00",
             "lastModifiedDate": "2020-02-03T22:00:08.750-05:00",
-            "lastName": "",
+            "lastName": "Bond",
             "lockedReason": "",
             "middleName": "",
             "passportCountry": "",
@@ -506,4 +506,68 @@ http_interactions:
           }
         }
   recorded_at: Wed, 13 Oct 2021 11:39:05 GMT
+- request:
+    method: post
+    uri: "<COREPRO_ENDPOINT>/customer/create"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "firstName": "James",
+          "lastName": "Bond",
+          "isSubjectToBackupWithholding": true,
+          "isOptedInToBankCommunication": false,
+          "isDocumentsAccepted": true
+        }
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <AUTH_TOKEN>
+      Connection:
+      - close
+      Host:
+      - sandbox-api.corepro.io
+      User-Agent:
+      - http.rb/5.0.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 13 Oct 2021 17:51:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '222'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
+      Access-Control-Expose-Headers:
+      - Request-Context
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "data": {
+            "customerId": 12345,
+            "messages": [],
+            "questions": [],
+            "verificationStatus": "success"
+          },
+          "errors": [],
+          "requestId": "6dfafc06-c053-4801-8b7c-60d7cf256d01",
+          "status": 200
+        }
+  recorded_at: Wed, 13 Oct 2021 17:51:37 GMT
 recorded_with: VCR 6.0.0
