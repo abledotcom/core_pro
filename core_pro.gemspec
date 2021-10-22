@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'core_pro/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'core_pro'
+  spec.name          = 'core_pro.rb'
   spec.version       = CorePro::VERSION
   spec.authors       = ['Stas SUȘCOV']
   spec.email         = ['stas@nerd.ro']
