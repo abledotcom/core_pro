@@ -32,7 +32,8 @@ RSpec.describe CorePro::Resource do
       updated_customer = customer.onboard(:socure)
 
       expect(updated_customer.customerId).to eq(12_345)
-      expect(updated_customer.status).to eq('Verified')
+      expect(updated_customer.kyc['status']).to eq('Verified')
+      expect(updated_customer.ofac['status']).to eq('Verified')
     end
   end
 
@@ -43,7 +44,24 @@ RSpec.describe CorePro::Resource do
         lastName: 'Bond',
         isSubjectToBackupWithholding: false,
         isOptedInToBankCommunication: false,
-        isDocumentsAccepted: true
+        isDocumentsAccepted: true,
+        birthDate: '1987-07-27',
+        taxId: '498931947',
+        emailAddress: 'stas@startuplandia.io',
+        phones: [
+          {
+            number: '+16502530000',
+            phoneType: 'Mobile'
+          }
+        ],
+        addresses: [
+          addressLine1: '4017 Buffalo Ave',
+          addressType: 'Residence',
+          city: 'Buffalo',
+          country: 'US',
+          postalCode: '94043',
+          state: 'NY'
+        ]
       ).reload
     end
 
@@ -108,7 +126,7 @@ RSpec.describe CorePro::Resource do
 
       expect(new_account.name).to eq('Test')
       expect(new_account.customerId).to eq(12_345)
-      expect(new_account.externalAccountId).not_to be_nil
+      expect(new_account.accountId).not_to be_nil
 
       expect(new_account).to be_a(CorePro::Account)
     end

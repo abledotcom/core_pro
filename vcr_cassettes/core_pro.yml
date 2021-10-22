@@ -356,11 +356,158 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 13 Oct 2021 11:32:03 GMT
+      - Fri, 22 Oct 2021 17:38:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '228'
+      - '3071'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
+      Access-Control-Expose-Headers:
+      - Request-Context
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "data": {
+            "customerId": 12345,
+            "fraud": {
+              "addressRisk": {
+                "reasons": {
+                  "i705": "Address is single unit",
+                  "i704": "Address is multi-unit or high rise ",
+                  "i708": "Address can be resolved to the individual"
+                },
+                "score": 0.01
+              },
+              "alertlist": {
+                "matches": [],
+                "reasons": {}
+              },
+              "emailRisk": {
+                "reasons": {
+                  "i520": "Emailrisk score represents low risk ",
+                  "i555": "Email address domain is more than 180 days old "
+                },
+                "score": 0.01
+              },
+              "nameAddress": {
+                "reasons": {
+                  "i708": "Address can be resolved to the individual ",
+                  "i710": "Address is correlated with the last name ",
+                  "i709": "Address is correlated with the first name "
+                },
+                "score": 0.99
+              },
+              "nameEmail": {
+                "reasons": {
+                  "i558": "Email address is correlated with the last name ",
+                  "i557": "Email address is correlated with the first name ",
+                  "i556": "Email address can be resolved to the individual "
+                },
+                "score": 0.99
+              },
+              "namePhone": {
+                "reasons": {
+                  "i621": "Phone number is correlated with the first name ",
+                  "i618": "Phone number can be resolved to the individual ",
+                  "i622": "Phone number is correlated with the last name "
+                },
+                "score": 0.99
+              },
+              "phoneRisk": {
+                "reasons": {
+                  "i601": "Phone number is a landline",
+                  "i608": "Phone number is commercial or dual - purpose ",
+                  "i614": "Phone number has been in service more than 365 days "
+                },
+                "score": 0.01
+              },
+              "reasons": {
+                "i553": "Email address is more than 2 years old ",
+                "i121": "Social networks match",
+                "i127": "Online sources are representative of a broader digital footprint than just social networks "
+              },
+              "score": 0.34,
+              "social": {
+                "profilesFound": [
+                  "https://twitter.com/ya38008926",
+                  "https://www.facebook.com/profile.php?id=100013544925409"
+                ]
+              },
+              "status": "Verified"
+            },
+            "kyc": {
+              "fieldValidations": {
+                "firstName": 0.99,
+                "surName": 0.99,
+                "streetAddress": 0.99,
+                "city": 0.99,
+                "state": 0.99,
+                "zip": 0.99,
+                "mobileNumber": 0.99,
+                "dob": 0.99,
+                "ssn": 0.99
+              },
+              "reasons": {
+                "i919": "Full name, address, and SSN/ITIN can be resolved to the individual"
+              },
+              "status": "Verified"
+            },
+            "ofac": {
+              "status": "Verified",
+              "watchlist": {
+                "matches": {},
+                "reasons": {
+                  "i196": "Global Watchlist sources selected are not correlated with the input identifiers "
+                }
+              }
+            },
+            "referenceId": "c4b0c669-9dea-4f43-be75-33e93433c2ee"
+          },
+          "errors": [],
+          "requestId": "13e2f165-c428-49bf-9a65-f364b232d619",
+          "status": 200
+        }
+  recorded_at: Fri, 22 Oct 2021 17:38:50 GMT
+- request:
+    method: post
+    uri: "<COREPRO_ENDPOINT>/account/create"
+    body:
+      encoding: UTF-8
+      string: '{"name":"Test","customerId":12345,"productId":98765}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <AUTH_TOKEN>
+      Connection:
+      - close
+      Host:
+      - sandbox-api.corepro.io
+      User-Agent:
+      - http.rb/5.0.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 22 Oct 2021 17:47:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1499'
       Connection:
       - close
       Cache-Control:
@@ -381,131 +528,56 @@ http_interactions:
         {
           "data": {
             "accessTypeCode": "FULL",
-            "accounts": [
-
-            ],
-            "addresses": [
-
-            ],
-            "cards": [
-
-            ],
-            "createdDate": "2020-02-03T22:00:08.750-05:00",
-            "culture": "en-US/es-US",
-            "customerCount": 0,
+            "accountBalance": 0.0,
+            "accountId": 22803936,
+            "accountNumberMasked": "*************5872",
+            "availableBalance": 0.0,
+            "balanceLastModifiedDate": "2021-10-22T13:47:34.772-04:00",
+            "category": "",
+            "createdDate": "2021-10-22T13:47:34.747-04:00",
             "customerId": 12345,
+            "customerPriority": 1,
             "customField1": "",
             "customField2": "",
             "customField3": "",
             "customField4": "",
             "customField5": "",
-            "documentsAcceptedDate": "2020-02-03T22:00:08.750-05:00",
-            "driversLicenseNumberMasked": "**********",
-            "driversLicenseState": "",
-            "emailAddress": "",
-            "externalAccounts": [
-
-            ],
-            "firstName": "James",
-            "gender": "M",
-            "isActive": true,
-            "isActiveOrVerified": true,
-            "isDocumentsAccepted": true,
+            "externalProgramTag": "",
+            "globalAccountAccessEnabled": false,
+            "interestTransferFkId": 22803936,
+            "isCloseable": true,
+            "isJointAccount": false,
             "isLocked": false,
-            "isOptedInToBankCommunication": false,
-            "isSubjectToBackupWithholding": true,
-            "lastActivityDate": "2020-02-03T22:00:08.750-05:00",
-            "lastModifiedDate": "2020-02-03T22:00:08.750-05:00",
-            "lastName": "Bond",
-            "lockedReason": "",
-            "middleName": "",
-            "passportCountry": "",
-            "passportNumberMasked": "**********",
-            "phones": [
-
-            ],
-            "status": "Verified",
-            "suffix": "Jr/Dr/Prof,...",
-            "tag": "",
-            "taxIdMasked": "**********"
-          }
-        }
-  recorded_at: Wed, 13 Oct 2021 11:32:03 GMT
-- request:
-    method: post
-    uri: "<COREPRO_ENDPOINT>/account/create"
-    body:
-      encoding: UTF-8
-      string: '{"name":"Test","customerId":12345,"productId":98765}'
-    headers:
-      Content-Type:
-      - application/json
-      Authorization:
-      - Basic <AUTH_TOKEN>
-      Connection:
-      - close
-      Host:
-      - sandbox-api.corepro.io
-      User-Agent:
-      - http.rb/5.0.2
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Date:
-      - Wed, 13 Oct 2021 11:39:05 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '184'
-      Connection:
-      - close
-      Cache-Control:
-      - no-cache
-      Pragma:
-      - no-cache
-      Expires:
-      - "-1"
-      Request-Context:
-      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
-      Access-Control-Expose-Headers:
-      - Request-Context
-      X-Frame-Options:
-      - SAMEORIGIN
-    body:
-      encoding: UTF-8
-      string: |
-        {
-          "data": {
-            "accountNumber": "string",
-            "accountNumberMasked": "string",
-            "customField1": null,
-            "customField2": null,
-            "customField3": null,
-            "customField4": null,
-            "customField5": null,
-            "customerId": 12345,
-            "externalAccountId": 9876,
-            "firstName": "Stas",
-            "isActive": true,
-            "isLocked": false,
-            "lastModifiedDate": "2021-10-13T17:42:40.977Z",
-            "lastName": "",
-            "lockedDate": null,
-            "lockedReason": null,
+            "isPrimary": false,
+            "isPrimaryCustomer": true,
+            "lastModifiedDate": "2021-10-22T13:47:34.767-04:00",
+            "legalName1": "",
+            "legalName2": "",
+            "lockReasonTypeCode": "UNK",
+            "lockTypeCode": "UNL",
+            "maturityTypeCode": "NONE",
             "name": "Test",
-            "nickName": null,
-            "nocCode": null,
-            "routingNumber": "999999999",
-            "routingNumberMasked": "******999",
-            "status": "Unverified",
-            "statusDate": "2021-10-13T17:42:40.977Z",
-            "tag": null,
-            "type": "Checking"
-          }
+            "pendingBalance": 0.0,
+            "primaryCustomerId": 22782668,
+            "productId": 98765,
+            "recurringContributionType": "None",
+            "regDWithdrawalCount": 0,
+            "routingNumberMasked": "*****6789",
+            "sourceLinks": [],
+            "status": "Open",
+            "subCategory": "",
+            "tag": "",
+            "targetAmount": 0.0,
+            "targetLinks": [],
+            "targetMetPercent": 0.0,
+            "totalCustomers": 1,
+            "type": "ForBenefitOf"
+          },
+          "errors": [],
+          "requestId": "51eb9e6c-aff8-49fc-9e18-5334102dbab7",
+          "status": 200
         }
-  recorded_at: Wed, 13 Oct 2021 11:39:05 GMT
+  recorded_at: Fri, 22 Oct 2021 17:47:34 GMT
 - request:
     method: post
     uri: "<COREPRO_ENDPOINT>/customer/create"
@@ -515,9 +587,24 @@ http_interactions:
         {
           "firstName": "James",
           "lastName": "Bond",
-          "isSubjectToBackupWithholding": true,
+          "isSubjectToBackupWithholding": false,
           "isOptedInToBankCommunication": false,
-          "isDocumentsAccepted": true
+          "isDocumentsAccepted": true,
+          "birthDate": "1987-07-27",
+          "taxId": "498931947",
+          "emailAddress": "stas@startuplandia.io",
+          "phones": [{
+            "number": "+16502530000",
+            "phoneType": "Mobile"
+          }],
+          "addresses": [{
+            "addressLine1": "4017 Buffalo Ave",
+            "addressType": "Residence",
+            "city": "Buffalo",
+            "country": "US",
+            "postalCode": "94043",
+            "state": "NY"
+          }]
         }
     headers:
       Content-Type:
@@ -536,7 +623,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 13 Oct 2021 17:51:37 GMT
+      - Fri, 22 Oct 2021 17:33:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -566,8 +653,8 @@ http_interactions:
             "verificationStatus": "success"
           },
           "errors": [],
-          "requestId": "6dfafc06-c053-4801-8b7c-60d7cf256d01",
+          "requestId": "6bfdd31d-149a-43fe-aeb5-a060d6450189",
           "status": 200
         }
-  recorded_at: Wed, 13 Oct 2021 17:51:37 GMT
+  recorded_at: Fri, 22 Oct 2021 17:33:56 GMT
 recorded_with: VCR 6.0.0
