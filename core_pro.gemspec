@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'CorePro Ruby SDK'
   spec.description   = 'Ruby SDK for working with CorePro web services.'
-  spec.homepage      = 'https://github.com/startuplandia/core_pro'
+  spec.homepage      = 'https://github.com/HeyBetter/core_pro'
   spec.license       = 'MIT'
 
   # Specify which files should be added to the gem when it is released.
@@ -32,5 +32,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'webmock'
-  spec.add_development_dependency 'yardstick'
 end
