@@ -56,4 +56,60 @@ http_interactions:
           "status": 400
         }
   recorded_at: Wed, 13 Oct 2021 18:24:16 GMT
+- request:
+    method: post
+    uri: "<COREPRO_ENDPOINT>/customer/update"
+    body:
+      encoding: UTF-8
+      string: '{"customerId":12345,"firstName":"James"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <AUTH_TOKEN>
+      Connection:
+      - close
+      Host:
+      - sandbox-api.corepro.io
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Mon, 08 Nov 2021 13:13:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '412'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
+      Access-Control-Expose-Headers:
+      - Request-Context
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "errors": [
+            {
+              "code": 60450,
+              "message": "Updating any properties that are used during the ID Verification process is not allowed.  These properties include firstName, middleName, lastName, birthDate, taxId, emailAddress, license information, passport information, and Residence address information."
+            }
+          ],
+          "requestId": "3a38df31-cf6c-41a1-9ab6-151bc1be6f3d",
+          "status": 400
+        }
+  recorded_at: Mon, 08 Nov 2021 13:13:08 GMT
 recorded_with: VCR 6.0.0

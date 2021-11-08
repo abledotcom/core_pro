@@ -43,8 +43,8 @@ module CorePro
     # @param id [String] resource indentifier
     # @param params [Hash] request parameters to pass to the endpoint as JSON.
     # @return [Object] instance
-    def self.update(id, params = {})
-      objectify(request(:patch, uri(:update, id), json: params))
+    def self.update(params = {})
+      objectify(request(:post, uri(:update), json: params))
     end
 
     # Resource constructor wrapper

@@ -75,6 +75,53 @@ RSpec.describe CorePro::Resource do
     end
   end
 
+  describe '#update for customer', vcr: 'core_pro' do
+    it do
+      customer = CorePro::Customer.update(
+        customerId: 12_345,
+        firstName: 'James',
+        lastName: 'Bond',
+        isSubjectToBackupWithholding: false,
+        isOptedInToBankCommunication: false,
+        birthDate: '1987-07-27',
+        taxId: '498931947',
+        emailAddress: 'stas@startuplandia.io',
+        phones: [
+          {
+            number: '+16502530000',
+            phoneType: 'Mobile'
+          }
+        ],
+        addresses: [
+          addressLine1: '4017 Buffalo Ave',
+          addressType: 'Residence',
+          city: 'Buffalo',
+          country: 'US',
+          postalCode: '94043',
+          state: 'NY'
+        ]
+      )
+
+      expect(customer.firstName).to eq('James')
+      expect(customer.lastName).to eq('Bond')
+      expect(customer.customerId).to eq(12_345)
+    end
+  end
+
+  describe '#update with errors for customer', vcr: 'core_pro_errors' do
+    it do
+      expect do
+        CorePro::Customer.update(
+          customerId: 12_345,
+          firstName: 'James'
+        )
+      end.to raise_error(
+        HTTP::RestClient::ResponseError,
+        /used during the ID Verification process is not allowed/
+      )
+    end
+  end
+
   describe '#create with errors', vcr: 'core_pro_errors' do
     let(:new_customer) do
       CorePro::Customer.create(
