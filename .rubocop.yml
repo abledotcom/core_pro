@@ -50,3 +50,9 @@ RSpec/FilePath:
 
 Gemspec/RequiredRubyVersion:
   Enabled: false
+
+Gemspec/RequireMFA:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
