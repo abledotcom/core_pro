@@ -178,4 +178,11 @@ RSpec.describe CorePro::Resource do
       expect(new_account).to be_a(CorePro::Account)
     end
   end
+
+  describe '#error_response?', vcr: 'core_pro_errors' do
+    it do
+      expect { CorePro::Account.all }
+        .to raise_error(HTTP::RestClient::ResponseError, '502 Bad Gateway')
+    end
+  end
 end

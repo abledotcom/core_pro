@@ -52,11 +52,11 @@ module CorePro
     # @param payload [Hash] response payload to build a resource.
     # @return [Object] instance or a list of instances.
     def self.objectify(payload)
-      if payload['data'].is_a?(Array)
+      if payload.is_a?(Hash) && payload['data'].is_a?(Array)
         return payload['data'].map { |data| new(data) }
       end
 
-      return new(payload['data']) if payload['data'].is_a?(Hash)
+      return new(payload['data']) if payload&.fetch('data', nil).is_a?(Hash)
 
       payload
     end
@@ -84,7 +84,7 @@ module CorePro
     #
     # @return [String]
     def self.extract_error(response, parsed_response)
-      parsed_response['errors'] || super(response, parsed_response)
+      parsed_response&.fetch('errors', nil) || super(response, parsed_response)
     end
 
     # Validate error response
@@ -96,7 +96,8 @@ module CorePro
     #
     # @return [TrueClass] if status code is not a successful standard value
     def self.error_response?(response, parsed_response)
-      !(200..299).cover?(response.code) && parsed_response['errors'].any?
+      errors = parsed_response&.fetch('errors', nil) || []
+      !(200..299).cover?(response.code) || errors.any?
     end
   end
 

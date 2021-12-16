@@ -112,4 +112,50 @@ http_interactions:
           "status": 400
         }
   recorded_at: Mon, 08 Nov 2021 13:13:08 GMT
+- request:
+    method: get
+    uri: "<COREPRO_ENDPOINT>/account/list"
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <AUTH_TOKEN>
+      Connection:
+      - close
+      Host:
+      - sandbox-api.corepro.io
+      User-Agent:
+      - http.rb/5.0.4
+  response:
+    status:
+      code: 502
+      message: Bad Gateway
+    headers:
+      Date:
+      - Mon, 08 Nov 2021 13:13:08 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '0'
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Request-Context:
+      - appId=cid-v1:c181f2a8-5f4a-4adf-9d88-98ac19261efa
+      Access-Control-Expose-Headers:
+      - Request-Context
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 08 Nov 2021 13:13:08 GMT
 recorded_with: VCR 6.0.0
