@@ -8,9 +8,16 @@ module CorePro
   class Resource < OpenStruct
     extend HTTP::RestClient::DSL
 
-    endpoint(ENV['COREPRO_ENDPOINT'] || 'https://api.corepro.io')
     content_type 'application/json'
-    basic_auth(user: ENV['COREPRO_KEY'], pass: ENV['COREPRO_SECRET'])
+    endpoint(
+      ENV['COREPRO_ENDPOINT'] ||
+        ENV['HELIX_ENDPOINT'] ||
+        'https://api.helix.q2.com'
+    )
+    basic_auth(
+      user: ENV['COREPRO_KEY'] || ENV['HELIX_KEY'],
+      pass: ENV['COREPRO_SECRET'] || ENV['HELIX_SECRET']
+    )
 
     # Resource collection finder, uses the default limit
     #
@@ -146,5 +153,14 @@ module CorePro
   # Transaction endpoint resource
   class Transaction < Resource
     path '/transaction'
+
+    # By-tag finder method
+    #
+    # @param id_or_ids [String] resource indentifiers
+    # @param params [Hash] URI parameters to pass to the endpoint.
+    # @return [Object] instance
+    def self.by_tag(*id_or_ids)
+      objectify(request(:get, uri(:getByTag, *id_or_ids)))
+    end
   end
 end
