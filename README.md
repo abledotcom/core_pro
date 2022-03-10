@@ -1,6 +1,6 @@
-# CorePro API SDK
+# Helix by Q2 (ex CorePro) API SDK
 
-Ruby SDK for working with [CorePro](https://docs.corepro.io)
+Ruby SDK for working with [Helix Q2](https://docs.helix.q2.com)
 
 ## Installation
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-A subset of the CorePro resources are provided with this SDK:
+A subset of the Helix/CorePro resources are provided with this SDK:
 
  * `CorePro::Program`
  * `CorePro::Customer`
@@ -34,6 +34,7 @@ These resources have implemented the following methods to allow API operations:
  * `#find`
  * `#create`
  * `#onboard(kyc_vendor)` (only for `CorePro::Customer`)
+ * `#by_tag` (only for `CorePro::Transaction`)
 
 Here's an example on how to create a customer, an account,
 and initiate a transfer:
@@ -66,10 +67,16 @@ transfer = CorePro::Transfer.create(
 )
 
 transactions = CorePro::Transaction.all(
-  customerId,
-  accountId,
-  '2021-12-21',
-  '2021-12-22'
+  [
+    customerId,
+    accountId,
+    '2021-12-21',
+    '2021-12-22'
+  ],
+  {
+    pageNumber: 0,
+    pageSize: 200
+  }
 )
 ```
 
@@ -77,9 +84,9 @@ transactions = CorePro::Transaction.all(
 
 The API keys will be loaded from your environment variables:
 
- * `COREPRO_KEY`
- * `COREPRO_SECRET`
- * `COREPRO_ENDPOINT` defaults to `https://api.corepro.io`
+ * `HELIX_KEY`
+ * `HELIX_SECRET`
+ * `HELIX_ENDPOINT` defaults to `https://api.helix.q2.com`
 
 ## Development
 
